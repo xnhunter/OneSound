@@ -49,7 +49,7 @@ int main()
     cout << "Press any key to quit: ";
     auto i = char();
     cin >> i;
-
-	return 0;
+    
+    return 0;
 }
 ```
