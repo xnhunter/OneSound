@@ -50,6 +50,6 @@ int main()
     auto i = char();
     cin >> i;
 
-	return 0;
+    return 0;
 }
 ```
