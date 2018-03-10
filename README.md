@@ -1,7 +1,7 @@
-#OneSound
+OneSound
 ==========
 
-This project provides a modern library for audio playback with 3 common formats.
+Modern library for audio playback with 3 common formats.
 
 Overview
 --------
