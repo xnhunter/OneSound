@@ -50,8 +50,7 @@ int main()
         stream_sound("Sound\\Crysis 1.ogg", false, true, 1.0f);
 
         cout << "Press any key to quit." << endl;
-        auto symbol = char();
-        cin >> symbol;
+        cin.get();
     }
     catch (const runtime_error& e)
     {

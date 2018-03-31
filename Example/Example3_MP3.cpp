@@ -48,8 +48,7 @@ int main()
         }
 
         cout << endl << "Press any key to quit." << endl;
-        auto i = char();
-        cin >> i;
+        cin.get();
     }
     catch (const std::runtime_error& e)
     {

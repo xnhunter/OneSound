@@ -44,8 +44,7 @@ int main()
         */
 
         cout << "Press any key to quit." << endl;
-        auto i = char();
-        cin >> i;
+        cin.get();
 
         // Here the sound is stopped even if it is still playing.
     }

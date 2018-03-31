@@ -25,12 +25,15 @@ int main()
                                             0.75f); // Volume
 
         cout << "Press any key to quit." << endl;
-        auto i = char();
-        cin >> i;
+        cin.get();
     }
     catch (const std::runtime_error& e)
     {
         cerr << e.what() << endl;
+    }
+    catch (...)
+    {
+        cerr "Unknown Exception"
     }
 
     return 0;

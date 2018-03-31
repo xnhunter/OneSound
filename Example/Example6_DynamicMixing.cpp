@@ -31,7 +31,7 @@ int main()
         buffers[3] = make_shared<SoundBuffer>("Sound\\thunder.ogg");
         buffers[4] = make_shared<SoundStream>("Sound\\voice.mp3");
 
-        cout << "Keys:" << endl 
+        cout << "Control Keys:" << endl 
              << "1 - Create Shot          (OGG Buffer)" << endl
              << "2 - Create Crysis 1      (OGG Stream)" << endl
              << "3 - Create Forest        (OGG Stream)" << endl
@@ -106,12 +106,15 @@ int main()
         active_sounds.clear();
 
         cout << "Press any key to quit." << endl;
-        auto i = char();
-        cin >> i;
+        cin.get();
     }
     catch (const runtime_error& e)
     {
         cout << e.what() << endl;
+    }
+    catch (...)
+    {
+        cerr << "Unknown exception." << endl;
     }
 
     return 0;

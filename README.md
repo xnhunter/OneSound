@@ -47,8 +47,7 @@ int main()
                                         0.75f); // Volume
 
     cout << "Press any key to quit: ";
-    auto i = char();
-    cin >> i;
+    cin.get();
 
     return 0;
 }
