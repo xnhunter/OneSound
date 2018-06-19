@@ -17,7 +17,8 @@ namespace onesnd
         INVALID, WAV, MP3, OGG,
     };
 
-    static AudioFileFormat getAudioFileFormatByExtension(const fs::path& file) // pretty cheap actually - we just check the file extension!
+    // Checks the file extension
+    static AudioFileFormat getAudioFileFormatByExtension(const fs::path& file)
     {
         if (!fs::exists(file))
             throw std::runtime_error("Can't find file: "s + file.string());
@@ -33,7 +34,7 @@ namespace onesnd
             return AudioFileFormat::OGG;
         else
         {
-            printf("ONESOUND: WARNING: Unsupported file format.");
+            printf("OneSound Warning: Unsupported file format.");
             return AudioFileFormat::INVALID;;
         }
     }
@@ -52,23 +53,24 @@ namespace onesnd
         };
     #pragma pack(pop)
 
-        auto tag = *(MP3TAGV2*)buffer;
+        auto tag = *(MP3TAGV2*)buffer; // agly, but works fine.
         if (tag.id3[0] == 'I' && tag.id3[1] == 'D' && tag.id3[2] == '3')
             return true;
 
         return false; // not an mp3 header
     }
 
-    static AudioFileFormat getAudioFileFormatByHeader(const char* file_name) // a bit heavier - we actually check the file header
+    // Checks the file header
+    static AudioFileFormat getAudioFileFormatByHeader(const char* file_name)
     {
         FILE** f = nullptr;
         fopen_s(f, file_name, "rb");
-        if (!f) // open file 'read-binary')
+        if (!f)
             throw std::runtime_error("Can't open file: "s + file_name);
 
-        // MP3 has a header tag, needs 10 bytes
-        // WAV has a large header with byte fields [file + 0]='RIFF' and [file + 8]='WAVE', needs 12bytes
-        // OGG has a 32-bit "capture pattern" sync field 'OggS', needs 4 bytes
+        // MP3 has a header tag that needs 10 bytes
+        // WAV has a large header with byte fields [file + 0]='RIFF' and [file + 8]='WAVE', so it needs 12 bytes
+        // OGG has a 32-bit "capture pattern" sync field 'OggS', it needs 4 bytes
         int buffer[3]; // WAV requires most, so 12 bytes
         fread(buffer, sizeof(buffer), 1, *f);
         fclose(*f); 
@@ -108,7 +110,7 @@ namespace onesnd
     {
         if (!as) 
             return false;
-        as->CloseStream(); // just in case...
+        as->CloseStream(); // just in case
 
         auto fmt = getAudioFileFormatByExtension(file);
         if (!fmt) 
@@ -153,7 +155,7 @@ namespace onesnd
 
         struct
         {
-            short AudioFormat;		// Should be 1, otherwise this file is compressed!
+            short AudioFormat;		// Should be 1, otherwise this file is compressed
             short NumChannels;		// Mono = 1, Stereo = 2
             int SampleRate;			// 8000, 22050, 44100, etc
             int ByteRate;			// == SampleRate * NumChannels * BitsPerSample/8
@@ -206,7 +208,7 @@ namespace onesnd
 
     bool AudioStream::OpenStream(const fs::path& file_name)
     {
-        if (FileHandle) // dont allow reopen an existing stream
+        if (FileHandle) // do not allow reopen an existing stream
             return false;
 
         FileHandle = reinterpret_cast<decltype(FileHandle)>(file_open_ro(file_name.string().c_str()));
@@ -232,7 +234,7 @@ namespace onesnd
         SampleSize = static_cast<decltype(SampleSize)>(wav.BitsPerSample >> 3);	// BPS/8 => SampleSize
         SampleBlockSize = SampleSize * NumChannels;	 // [LL][RR] (1 to 4 bytes)
 
-        return true; // everything went ok
+        return true;
     }
 
     void AudioStream::CloseStream()
@@ -241,7 +243,7 @@ namespace onesnd
         {
             file_close(reinterpret_cast<void*>(FileHandle));
 
-            FileHandle = nullptr;
+            FileHandle = 0;
             stream_size = 0;
             stream_position = 0;
             sample_rate = 0;
@@ -254,20 +256,20 @@ namespace onesnd
     int AudioStream::ReadSome(void* dstBuffer, int dstSize)
     {
         if (!FileHandle)
-            return 0; // nothing to do here
+            return 0; // so nothing to do here
 
-        auto count = stream_size - stream_position; // calc available data from stream
-        if (count == 0) // if are stream available bytes 0
+        auto count = stream_size - stream_position; // calculate available data from stream
+        if (count == 0) // if are stream available bytes are 0
             return 0; // EOS is reached
 
         if (count > dstSize) // if stream has more data than buffer
             count = dstSize; // set bytes to read bigger
-        count -= count % SampleBlockSize; // make sure count is aligned to blockSize
+        count -= count % SampleBlockSize; // make sure that count is aligned to blockSize
 
         if (file_read(FileHandle, dstBuffer, count) <= 0)
         {
             stream_position = stream_size; // set EOS
-            return 0; // no bytes read
+            return 0; // no bytes to read
         }
         stream_position += count;
 
