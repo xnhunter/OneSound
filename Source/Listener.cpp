@@ -12,10 +12,10 @@ namespace onesnd
 {
     void Listener::setVolume(float volume)
     {
-        if (volume < 0.0f)
-            volume = 0.0f;
-        else if (volume < 0.0f)
-            volume = 0.0f;
+        if (volume < 0.f)
+            volume = 0.f;
+        else if (volume > 1.f)
+            volume = 1.f;
         else
             XAudio2Device::instance().getMaster()->SetVolume(volume);
     }
