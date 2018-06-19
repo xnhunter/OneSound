@@ -17,7 +17,6 @@ namespace onesnd
     XAUDIO2_PERFORMANCE_DATA OneSound::getPerfomanceData() const
     {
         XAUDIO2_PERFORMANCE_DATA pd;
-
         XAudio2Device::instance().getEngine()->GetPerformanceData(&pd);
 
         return pd;
