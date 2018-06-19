@@ -1,13 +1,12 @@
 OneSound
 ==========
-
-Modern library for audio playback with 3 common formats.
+Modern library for audio playback with 3 common formats.  It provides a **high-performance** audio library written in C++17. The library is mostly suited for a game engine or even small demos.
 
 Overview
 --------
 
 - **Version**: 1.0.0
-- **License**: [MIT](https://github.com/weelhelmer/OneSound/master/LICENSE.txt)
+- **License**: [MIT](https://github.com/weelhelmer/OneSound/master/LICENSE)
 - **Status**: Demo
 
 Supported Platforms
