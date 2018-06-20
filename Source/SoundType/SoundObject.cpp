@@ -47,7 +47,7 @@ namespace onesnd
             play();
     }
 
-    SoundObject::~SoundObject() // unhooks any sounds and frees resources
+    SoundObject::~SoundObject()
     {
         if (sound) 
             setSound(nullptr);
@@ -97,19 +97,19 @@ namespace onesnd
     void SoundObject::play()
     {
         if (state->isPlaying) 
-            rewind();		// rewind to start of stream and continue playing
+            rewind(); // rewind to start of stream and continue playing
         else if (source)
         {
             state->isPlaying = true;
             state->isPaused = false;
 
-            if (!XABuffer::getBuffersQueued(source))		// no buffers queued (track probably finished)
+            if (!XABuffer::getBuffersQueued(source)) // no buffers queued (track probably finished)
             {
                 state->isInitial = true;
-                sound->ResetBuffer(this);	// reset buffer to beginning
+                sound->ResetBuffer(this); // reset buffer to beginning
             }
 
-            source->Start();				// continue if paused or suspended
+            source->Start(); // continue if paused or suspended
         }
     }
 
@@ -131,7 +131,6 @@ namespace onesnd
         if (source && state->isPlaying)
         { 
             // only if isPlaying, to avoid rewind
-
             state->isPlaying = false;
             state->isPaused = false;
 
