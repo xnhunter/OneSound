@@ -11,12 +11,11 @@
 namespace onesnd
 {
     // REDO: Listener class.
-    //       
     class Listener
     {
     public:
         Listener();
-        ~Listener();
+       ~Listener();
 
         Listener(const Listener&) = default;
         Listener(Listener&&) = default;
@@ -27,8 +26,5 @@ namespace onesnd
     public:
         void setVolume(float volume);
         float getVolume() const;
-
-    private:
-
     };
 }
