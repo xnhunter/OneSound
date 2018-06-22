@@ -108,6 +108,7 @@ namespace onesnd
 
         xaBuffer = XABuffer::create(this, strm->Size(), strm);
         strm->CloseStream(); // close this manually, otherwise we get a nasty error when the dtor runs...
+        
         return xaBuffer != nullptr;
     }
 
@@ -115,12 +116,15 @@ namespace onesnd
     {
         if (!xaBuffer)
             return true; // yes, its unloaded
+        
         if (referance_count > 0)
         {
             //indebug(printf("SoundBuffer::Unload() Memory Leak: failed to delete alBuffer, because it's still in use.\n"));
             return false; // can't do anything here while still referenced
         }
+        
         XABuffer::destroy(xaBuffer);
+        
         return true;
     }
 
@@ -134,6 +138,7 @@ namespace onesnd
 
         so->getSource()->SubmitSourceBuffer(xaBuffer); // enqueue this buffer
         ++referance_count;
+        
         return true;
     }
 
@@ -144,8 +149,10 @@ namespace onesnd
             so->getSource()->Stop(); // make sure its stopped (otherwise Flush won't work)
             if (XABuffer::getBuffersQueued(so->getSource()))
                 so->getSource()->FlushSourceBuffers(); // ensure not in queue anymore
+        
             --referance_count;
         }
+        
         return true;
     }
 
@@ -159,6 +166,7 @@ namespace onesnd
             so->getSource()->FlushSourceBuffers();
 
         so->getSource()->SubmitSourceBuffer(xaBuffer);
+        
         return true;
     }
 }
