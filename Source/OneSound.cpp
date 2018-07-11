@@ -51,7 +51,7 @@ namespace onesnd
 
     std::string OneSound::getLibraryStatus() const
     {
-        return "Demo"s;
+        return "Alpha"s;
     }
 
     std::string OneSound::getLibraryName() const
