@@ -1,13 +1,13 @@
 OneSound
 ==========
-Modern library for audio playback with 3 common formats.  It provides a **high-performance** audio library written in C++17. The library is mostly suited for a game engine or even small demos.
+Modern library for audio playback with 3 common formats. It provides a **high-performance** audio library written in C++17. The library is generally suited for a game engine or small demos.
 
 Overview
 --------
 
 - **Version**: 1.0.0
 - **License**: [MIT](https://github.com/weelhelmer/OneSound/master/LICENSE)
-- **Status**: Demo
+- **Status**: Alpha
 
 Supported Platforms
 -------------------
@@ -32,10 +32,14 @@ Getting Started
 Play a sound with less code as possible:
 
 ```cpp
+#include <iostream>
 #include <OneSound/OneSound.h>
 
+using namespace std;
+using namespace onesnd;
+
 int main()
-{
+{ 
     // Create OneSound that initialize XAudio2 Device.
     auto one_sound = make_unique<OneSound>();
 
