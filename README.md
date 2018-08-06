@@ -43,7 +43,7 @@ int main()
     // Create OneSound that initialize XAudio2 Device.
     auto one_sound = make_unique<OneSound>();
 
-    // Create a sound that not loops, plays at once and with 75% volume.
+    // Create a sound that not loops, plays at once with 75% volume.
     auto sound_1 = make_unique<Sound2D>(make_unique<SoundBuffer>("Sound\\shot.wav"),
                                         false, // Looping
                                         true, // Playing
