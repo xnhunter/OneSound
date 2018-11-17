@@ -41,7 +41,7 @@ namespace onesnd
 
     unsigned long long OneSound::getLibraryVersion() const
     {
-        return 1;
+        return ull1;
     }
 
     std::string OneSound::getLibraryVersionStr() const
