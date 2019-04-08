@@ -28,9 +28,9 @@ namespace onesnd
             int base; // current PCM block offset
             int next; // the next PCM block offset to load
 
-            XABuffer* front;	// currently playing buffer - frontbuffer
-            XABuffer* back;		// enqueued backbuffer
-            bool busy;			// the stream is busy on an internal operation, all other operations are ignored
+            XABuffer* front;    // currently playing buffer - frontbuffer
+            XABuffer* back;	    // enqueued backbuffer
+            bool busy;          // the stream is busy on an internal operation, all other operations are ignored
 
             inline SO_ENTRY(SoundObject* obj) : 
                 obj(obj), 
@@ -42,11 +42,10 @@ namespace onesnd
             { }
         };
 
-        std::vector<SO_ENTRY> alSources;	// bound sources
-        AudioStream* alStream;			// streamer object
+        std::vector<SO_ENTRY> alSources;    // bound sources
+        AudioStream* alStream;              // streamer object
 
     public:
-
         /**
         * Creates a new SoundsStream object
         */
@@ -145,7 +144,6 @@ namespace onesnd
         void Seek(SoundObject* so, int samplepos);
 
     protected:
-
         /**
         * Internal stream function.
         * @param soe SoundObject Entry to stream
