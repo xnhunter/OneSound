@@ -1,6 +1,6 @@
 OneSound
 ==========
-Modern library for audio playback with 3 common formats. It provides a **high-performance** audio library written in C++17. The library is generally suited for a game engine or small demos.
+Modern library for audio playback supporting 3 common audio formats. The software provides a **high-performance** audio sources, it is written in C++17. The library is generally suited for a game engine or media applications.
 
 Overview
 --------
