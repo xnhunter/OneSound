@@ -6,7 +6,7 @@ Overview
 --------
 
 - **Version**: 1.0.0
-- **License**: [MIT](https://github.com/weelhelmer/OneSound/master/LICENSE)
+- **License**: [MIT](https://github.com/bondarenko-me/OneSound/master/LICENSE)
 - **Status**: Alpha
 
 Supported Platforms
