@@ -26,6 +26,11 @@ Supported Audio File Formats
 - **MP3** (MPEG-1 Audio Layer 3) Playing buffers/Streaming
 - **OGG** (Ogg-Vorbis) Playing buffers/Streaming
 
+Dependencies
+---------------
+- [**OGG Vorbis**](https://github.com/xiph/vorbis)
+- [**MPG123**](https://github.com/georgi/mpg123)
+
 Getting Started
 ---------------
 
