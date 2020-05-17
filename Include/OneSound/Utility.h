@@ -22,7 +22,9 @@ namespace onesnd
     inline void* file_open_ro(const char* filename)
     {
         void* fh = CreateFileA(filename, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-        if (fh == INVALID_HANDLE_VALUE) return NULL;
+        if (fh == INVALID_HANDLE_VALUE)
+            return NULL;
+
         return fh;
     }
     // close the file
@@ -31,7 +33,7 @@ namespace onesnd
         CloseHandle(handle);
         return 0;
     }
-    // reads bytes from an opened file
+    // reads bytes from opened file
     inline int file_read(void* handle, void* dst, size_t size)
     {
         DWORD bytesRead;
