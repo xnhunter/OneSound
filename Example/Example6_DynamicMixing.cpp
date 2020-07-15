@@ -27,8 +27,8 @@ int main()
         buffers[1] = make_shared<SoundStream>();
         buffers[1]->Load("Sound\\Crysis 1.ogg");
 
-        buffers[2] = make_shared<SoundStream>("Sound\\forest.ogg"); // Load a sound at once.
-        buffers[3] = make_shared<SoundBuffer>("Sound\\thunder.ogg");
+        buffers[2] = make_shared<SoundStream>("Sound\\thunder.ogg"); // Stream a sound dynamically.
+        buffers[3] = make_shared<SoundBuffer>("Sound\\thunder.ogg"); // Load a sound at once.
         buffers[4] = make_shared<SoundStream>("Sound\\voice.mp3");
 
         cout << "Keys:" << endl 

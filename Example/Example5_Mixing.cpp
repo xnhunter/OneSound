@@ -17,8 +17,8 @@ int main()
     {
         auto one_sound = make_unique<OneSound>();
 
-        unique_ptr<SoundBuffer> buffer;
-        vector<unique_ptr<Sound2D>> sounds;
+        shared_ptr<SoundBuffer> buffer;
+        vector<shared_ptr<Sound2D>> sounds;
 
         auto play_sound([&](const fs::path& file_name, const bool& loop = false, const bool& play = true, const float& volume = 1.0f)
         {
