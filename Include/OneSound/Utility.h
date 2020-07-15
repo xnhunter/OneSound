@@ -6,7 +6,8 @@
 
 #pragma once
 
-#pragma warning (disable : 4251, 4172)
+#pragma warning (disable : 4251)
+#pragma warning (disable : 4172)
 
 #include <Windows.h>
 
