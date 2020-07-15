@@ -5,7 +5,7 @@ Modern library for audio playback supporting 3 common audio formats. The softwar
 Overview
 --------
 
-- **Version**: 1.0.0
+- **Version**: 1.0.5
 - **License**: [MIT](https://github.com/bondarenko-me/OneSound/master/LICENSE)
 - **Status**: Alpha
 
